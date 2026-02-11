@@ -1,0 +1,12 @@
+<form [formGroup]="loginForm" (ngSubmit)="handleLoginSubmit()">
+    <input type="text" placeholder="Username" formControlName="username">
+    <input type="password" placeholder="Password" formControlName="password">
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>
+
+<form [formGroup]="registerForm" (ngSubmit)="handleRegisterSubmit()">
+    <input type="text" placeholder="Username" formControlName="username">
+    <input type="password" placeholder="Password" formControlName="password">
+    <input type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+</form>
