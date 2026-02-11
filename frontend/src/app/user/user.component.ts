@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {FormGroup, FormControl, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
+import {FormGroup, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -8,6 +9,8 @@ import {FormGroup, FormControl, ReactiveFormsModule, Validators, AbstractControl
   styleUrl: './user.component.scss'
 })
 export class UserComponent {
+
+  constructor(private router: Router) {}
 
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -23,6 +26,7 @@ export class UserComponent {
   handleLoginSubmit() {
     // TODO: implement login logic
     alert("Login erfolgreich!")
+    this.router.navigate(['/dashboard']);
     this.loginForm.reset();
     
   }
