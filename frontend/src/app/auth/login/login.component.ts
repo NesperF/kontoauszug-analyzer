@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormGroup, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private router: Router) {}
+  constructor(public authService: AuthService) {}
 
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -18,12 +19,6 @@ export class LoginComponent {
   });
 
   handleLoginSubmit() {
-    // TODO: implement login logic
-    alert("Login erfolgreich!")
-    this.router.navigate(['/dashboard']);
-    this.loginForm.reset();
-    
+    this.authService.login(this.loginForm);
   }
-  
-
 }
